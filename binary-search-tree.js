@@ -28,6 +28,26 @@ class Tree {
         return node;
     }
 
+    insert(value, root = this.root) {
+
+        if (root === null) {
+          root = new Node(value);
+          return root;
+        }
+  
+        if (value < root.data) {
+          root.left = this.insert(value, root.left);
+        } else if (value > root.data) {
+          root.right = this.insert(value, root.right);
+        }
+  
+        return root;
+    }
+
+    deleteItem(value) {
+
+    }
+
     sort(array) {
 
         return array.sort((a, b) => a - b);
@@ -52,7 +72,18 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     }
 };
 
-const exampleArray = [1, 9, 9, 8, 5, 4, 2, 7, 4, 3, 6, 10,11];
+
+
+
+
+const exampleArray = [1, 9, 9, 8, 5, 4, 2, 7, 4, 3, 6, 10];
 const tree = new Tree(exampleArray);
+
+prettyPrint(tree.root);
+console.log('-----------------------------');
+
+tree.insert(11);
+tree.insert(13);
+tree.insert(0);
 
 prettyPrint(tree.root);
