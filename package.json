@@ -1,0 +1,13 @@
+{
+  "name": "top_binarysearchtree",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "The Odin Project - Binary Search Tree",
+  "main": "binary-search-tree.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
