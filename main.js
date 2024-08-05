@@ -34,5 +34,9 @@ console.log('-----------------------------');
 
 // tree.levelOrder(node => console.log(node.data));
 
-tree.inOrder(node => console.log(node.data));
+// tree.inOrder(node => console.log(node.data));
+
+// tree.postOrder(node => console.log(node.data));
+
+tree.preOrder(node => console.log(node.data));
 

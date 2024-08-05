@@ -138,6 +138,35 @@ class Tree {
 
     }
 
+    postOrder(callback, root = this.root) {
+        if (typeof callback !== 'function') {
+            throw new Error('Callback needs to be a function!');
+        }
+
+        if (root === null) {
+            return;
+        }
+
+        this.postOrder(callback, root.left);
+        this.postOrder(callback, root.right);
+        callback(root);
+    }
+
+    preOrder(callback, root = this.root) {
+        if (typeof callback !== 'function') {
+            throw new Error('Callback needs to be a function!');
+        }
+
+        if (root === null) {
+            return;
+        }
+        
+        callback(root);
+        this.preOrder(callback, root.left);
+        this.preOrder(callback, root.right);
+        
+    }
+
     sort(array) {
         return array.sort((a, b) => a - b);
     }
