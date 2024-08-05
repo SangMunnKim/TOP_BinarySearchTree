@@ -160,12 +160,78 @@ class Tree {
         if (root === null) {
             return;
         }
-        
+
         callback(root);
         this.preOrder(callback, root.left);
         this.preOrder(callback, root.right);
         
     }
+
+    height(node) {
+        if (node === null) {
+            return -1; // Base case: height of an empty tree is -1
+        }
+        
+        const leftHeight = this.height(node.left);
+        const rightHeight = this.height(node.right);
+        
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    depth(node, root = this.root, currentDepth = 0) {
+        if (root === null) {
+            return -1; // Base case: if node is not found, return -1
+        }
+
+        if (root.data === node.data) {
+            return currentDepth;
+        }
+
+        if (node.data < root.data) {
+            return this.depth(node, root.left, currentDepth + 1);
+        } else {
+            return this.depth(node, root.right, currentDepth + 1);
+        }
+    }
+
+    isBalanced(node = this.root) {
+        if (node === null) {
+            return true; // An empty tree is balanced
+        }
+    
+        const leftHeight = this.height(node.left);
+        const rightHeight = this.height(node.right);
+    
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return false; // If the difference in heights is more than 1, the tree is not balanced
+        }
+    
+        return this.isBalanced(node.left) && this.isBalanced(node.right); // Check recursively for left and right subtrees
+    }
+
+    // Method to perform in-order traversal and collect nodes in a sorted array
+    
+
+    // Method to rebalance the tree
+    rebalance() {
+        const inOrderTraversal = function(node, array = []) {
+            
+            if (node === null) {
+                return array;
+            }
+        
+            inOrderTraversal(node.left, array);
+            array.push(node.data);
+            inOrderTraversal(node.right, array);
+    
+            return array;
+        }
+        
+        const sortedNodes = inOrderTraversal(this.root); // Get sorted nodes using in-order traversal
+        this.root = this.buildTree(sortedNodes, 0, sortedNodes.length - 1); // Rebuild the tree using the sorted nodes
+    }
+
+    
 
     sort(array) {
         return array.sort((a, b) => a - b);

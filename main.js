@@ -18,13 +18,19 @@ const exampleArray = [1, 9, 9, 8, 5, 4, 2, 7, 4, 3, 6, 10];
 const tree = new Tree(exampleArray);
 
 prettyPrint(tree.root);
+console.log('Is balanced: ' + tree.isBalanced());
 console.log('-----------------------------');
 
-// tree.insert(11);
-// tree.insert(13);
-// tree.insert(0);
+tree.insert(11);
+tree.insert(13);
+tree.insert(0);
 
-// prettyPrint(tree.root);
+prettyPrint(tree.root);
+console.log('Is balanced: ' + tree.isBalanced());
+console.log('-----------------')
+tree.rebalance();
+prettyPrint(tree.root);
+console.log('Is balanced: ' + tree.isBalanced());
 // tree.deleteItem(11);
 // prettyPrint(tree.root);
 // tree.deleteItem(13);
@@ -38,5 +44,8 @@ console.log('-----------------------------');
 
 // tree.postOrder(node => console.log(node.data));
 
-tree.preOrder(node => console.log(node.data));
+// tree.preOrder(node => console.log(node.data));
 
+// console.log(tree.height(tree.root));
+
+// console.log(tree.depth(new Node(2)));
